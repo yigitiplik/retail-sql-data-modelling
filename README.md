@@ -12,7 +12,7 @@ The workflow covers:
 Preparing analytical SQL (KPIs)
 
 # Project Structure
-'''
+```
 retail-sql-data-modelling/
 ├─ data/
 │   └─ Online_Retail.zip               # Sample dataset (optional)
@@ -26,7 +26,7 @@ retail-sql-data-modelling/
 │   ├─ kpi_monthly_product_performance.sql
 │   └─ kpi_top_customers.sql
 └─ README.md
-'''
+```
 
 # Dataset
 
@@ -42,9 +42,9 @@ A CSV-compatible version of the dataset is provided here:
 
 All table structures are defined in:
 
-'''
+```
 sql/schema.sql
-'''
+```
 
 It contains:
 
@@ -56,62 +56,57 @@ It contains:
 * order_items → order line fact
 
 The schema also includes sample commented COPY command:
-'''
+```
 -- COPY online_retail_raw
 -- FROM 'C:\\path\\to\\online_retail_raw.csv'
 -- DELIMITER ','
 -- CSV HEADER;
-'''
+```
 
 # 2. ETL Process (5 Steps)
 
 The full ETL pipeline is found in:
-
+```
 sql/etl_online_retail.sql
-
+```
 
 It performs:
 
-STEP 1 — Clean raw data
+## STEP 1 — Clean raw data
 
-Remove cancelled invoices
+* Remove cancelled invoices
+* Remove returns (negative quantities)
+* Remove missing customer IDs
+* Remove invalid prices
+* Parse invoice timestamp
 
-Remove returns (negative quantities)
-
-Remove missing customer IDs
-
-Remove invalid prices
-
-Parse invoice timestamp
-
-STEP 2 — Build customers dimension
+## STEP 2 — Build customers dimension
 
 1 row per CustomerID.
 
-STEP 3 — Build products dimension
+## STEP 3 — Build products dimension
 
 1 row per StockCode, with:
 
-most frequent unit price
+* most frequent unit price
+* product name
 
-product name
-
-STEP 4 — Build orders fact
+## STEP 4 — Build orders fact
 
 1 row per InvoiceNo.
 
-STEP 5 — Build order_items fact
+## STEP 5 — Build order_items fact
 
 Aggregates line items per invoice + product.
 
 After running ETL, row counts look like:
 
-Table	Approx Count
-online_retail_clean	~390k rows
-customers	~4,300 rows
-products	~3,600 rows
-orders	~18,500 rows
-order_items	~380,000 rows
+Table	                        Approx Count
+online_retail_clean	           ~390k rows
+customers	                     ~4,300 rows
+products	                     ~3,600 rows
+orders	                       ~18,500 rows
+order_items	                   ~380,000 rows
 
 # 3. KPI SQL Queries
 
@@ -135,17 +130,17 @@ These KPIs include:
 
 # 4. How to Run the Project
 ## 1. Create database
-'''
+```
 CREATE DATABASE retail_db;
-'''
+```
 
 ## 2. Run schema
 
 Open pgAdmin → retail_db → Query Tool → run:
 
-'''
+```
 sql/schema.sql
-'''
+```
 
 ## 3. Import dataset into online_retail_raw
 
@@ -156,9 +151,9 @@ or update and run COPY command in schema file.
 
 Execute:
 
-'''
+```
 sql/etl_online_retail.sql
-'''
+```
 
 ## 5. Run KPI queries
 
