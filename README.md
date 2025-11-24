@@ -8,8 +8,9 @@ The workflow covers:
 * Data cleaning (staging → curated dataset)
 * Building a retail star-schema
 * Loading normalized dimension and fact tables
-
-Preparing analytical SQL (KPIs)
+* Preparing analytical SQL (KPIs)
+  
+---
 
 # Project Structure
 ```
