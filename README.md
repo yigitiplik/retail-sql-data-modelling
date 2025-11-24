@@ -67,6 +67,8 @@ The schema also includes sample commented COPY command:
 -- CSV HEADER;
 ```
 
+---
+
 # 2. ETL Process (5 Steps)
 
 The full ETL pipeline is found in:
@@ -113,6 +115,7 @@ After running ETL, row counts look like:
 | orders               | ~18,500 rows |
 | order_items          | ~380,000 rows|
 
+---
 
 # 3. KPI SQL Queries
 
@@ -133,6 +136,8 @@ These KPIs include:
 * Revenue by Country
 * Monthly Product Performance
 * Top Customers by Spend
+
+---
 
 # 4. How to Run the Project
 ## 1. Create database
@@ -165,6 +170,7 @@ sql/etl_online_retail.sql
 
 Each KPI is in the /sql folder.
 
+---
 
 # 5. Business Value
 
