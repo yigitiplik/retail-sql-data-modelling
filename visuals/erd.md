@@ -52,3 +52,69 @@ This ERD describes the core tables used in the Online Retail data model.
   - `online_retail_raw` is the raw source.
   - `online_retail_clean` is the cleaned staging layer.
   - `customers`, `products`, `orders`, `order_items` form the analytical model.
+ 
+    ```mermaid
+erDiagram
+    customers {
+        int customer_id
+        int external_customer_id
+        string country
+        timestamp created_at
+    }
+
+    products {
+        int product_id
+        string stock_code
+        string product_name
+        numeric unit_price
+        timestamp created_at
+    }
+
+    orders {
+        int order_id
+        string invoice_no
+        int customer_id
+        timestamp order_date
+        string order_status
+        string country
+        timestamp created_at
+    }
+
+    order_items {
+        int order_item_id
+        int order_id
+        int product_id
+        int quantity
+        numeric unit_price
+        numeric line_total
+    }
+
+    online_retail_raw {
+        string InvoiceNo
+        string StockCode
+        string Description
+        int Quantity
+        string InvoiceDate
+        numeric UnitPrice
+        int CustomerID
+        string Country
+    }
+
+    online_retail_clean {
+        string invoiceno
+        string stockcode
+        string description
+        int quantity
+        string invoicedate
+        timestamp order_timestamp
+        numeric unitprice
+        int customerid
+        string country
+    }
+
+    customers ||--o{ orders : "places"
+    orders ||--o{ order_items : "has"
+    products ||--o{ order_items : "appears in"
+
+    online_retail_raw ||--o{ online_retail_clean : "cleaned into"
+
