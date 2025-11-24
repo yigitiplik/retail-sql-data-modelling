@@ -101,12 +101,14 @@ Aggregates line items per invoice + product.
 
 After running ETL, row counts look like:
 
-Table	                        Approx Count
-online_retail_clean	           ~390k rows
-customers	                     ~4,300 rows
-products	                     ~3,600 rows
-orders	                       ~18,500 rows
-order_items	                   ~380,000 rows
+| Table                | Approx Count |
+|----------------------|--------------|
+| online_retail_clean  | ~390k rows   |
+| customers            | ~4,300 rows  |
+| products             | ~3,600 rows  |
+| orders               | ~18,500 rows |
+| order_items          | ~380,000 rows|
+
 
 # 3. KPI SQL Queries
 
