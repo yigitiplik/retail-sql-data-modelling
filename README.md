@@ -172,7 +172,23 @@ Each KPI is in the /sql folder.
 
 ---
 
-# 5. Business Value
+# 5. ERD (Optional)
+
+You may add an ERD image under:
+
+```
+/visuals/erd.png
+```
+
+Or generate it with tools like:
+
+* dbdiagram.io
+* DrawSQL
+* SQLDBM
+
+---
+
+# 6. Business Value
 
 This project demonstrates:
 
